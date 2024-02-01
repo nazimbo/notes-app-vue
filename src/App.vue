@@ -1,5 +1,12 @@
 <template>
   <main>
+    <div class="overlay">
+      <div class="modal">
+        <textarea id="new-note" name="new-note" placeholder="New note" cols="30" rows="10"></textarea>
+        <button>Save</button>
+        <button class="cancel">Cancel</button>
+      </div>
+    </div>
     <div class="container">
       <header>
         <h1>My notes</h1>
@@ -39,7 +46,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px 0;
 }
 
 h1 {
@@ -47,7 +53,7 @@ h1 {
   font-weight: bold;
 }
 
-button {
+header button {
   font-size: 30px;
   font-weight: bold;
   background: black;
@@ -86,5 +92,53 @@ button {
   font-size: 12px;
   font-weight: bold;
   text-align: right;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  position: relative;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 50%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+#new-note {
+  height: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.modal button {
+  font-size: 20px;
+  font-weight: bold;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.modal .cancel {
+  background: gray;
 }
 </style>
