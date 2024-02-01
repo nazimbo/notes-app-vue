@@ -10,6 +10,14 @@
           <p class="text">My first note</p>
           <p class="date">20/10/2020</p>
         </div>
+        <div class="card">
+          <p class="text">My second note</p>
+          <p class="date">20/10/2020</p>
+        </div>
+        <div class="card">
+          <p class="text">My third note</p>
+          <p class="date">20/10/2020</p>
+        </div>
       </div>
     </div>
   </main>
@@ -50,9 +58,8 @@ button {
 }
 
 .cards {
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -65,6 +72,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin: 10px;
 }
 
 .text {
