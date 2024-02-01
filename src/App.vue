@@ -7,8 +7,8 @@
       </header>
       <div class="cards">
         <div class="card">
-          <p class="text">sicing elit. Quisquam voluptatum, quibusdam, quia, quae voluptates voluptatem quod voluptatibus quos doloribus quas doloremque. Quisquam voluptatum, quibusdam, quia,</p>
-          <p class="date"></p>
+          <p class="text">My first note</p>
+          <p class="date">20/10/2020</p>
         </div>
       </div>
     </div>
@@ -51,17 +51,20 @@ button {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 .card {
-  background: #d8a626;
+  background: firebrick;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: 200px;
   height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .text {
@@ -69,5 +72,11 @@ button {
   font-weight: bold;
   height: 100px;
   overflow: hidden;
+}
+
+.date {
+  font-size: 12px;
+  font-weight: bold;
+  text-align: right;
 }
 </style>
