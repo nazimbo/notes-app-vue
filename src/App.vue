@@ -1,16 +1,34 @@
+<script setup>
+import { ref } from "vue";
+
+const showModal = ref(false);
+const newNote = ref("");
+const notes = ref([]);
+
+const saveNote = () => {
+  notes.value.push({
+    text: newNote.value,
+    date: new Date().toLocaleDateString(),
+  });
+  showModal.value = false;
+  newNote.value = "";
+};
+</script>
+
 <template>
   <main>
-    <div class="overlay">
+    <div v-if="showModal" class="overlay">
       <div class="modal">
-        <textarea id="new-note" name="new-note" placeholder="New note" cols="30" rows="10"></textarea>
-        <button>Save</button>
-        <button class="cancel">Cancel</button>
+        <textarea v-model="newNote" id="new-note" name="new-note" placeholder="New note" cols="30" rows="10"></textarea>
+        <button @click="saveNote">Save</button>
+        <button class="cancel" @click="showModal = false">Cancel</button>
       </div>
     </div>
     <div class="container">
       <header>
+        {{ notes }}
         <h1>My notes</h1>
-        <button>+</button>
+        <button @click="showModal = true">+</button>
       </header>
       <div class="cards">
         <div class="card">
@@ -54,12 +72,12 @@ h1 {
 }
 
 header button {
-  font-size: 30px;
+  font-size: 40px;
   font-weight: bold;
   background: black;
   color: white;
   border: none;
-  border-radius: 100%;
+  border-radius: 30%;
   cursor: pointer;
 }
 
