@@ -26,22 +26,13 @@ const saveNote = () => {
     </div>
     <div class="container">
       <header>
-        {{ notes }}
         <h1>My notes</h1>
         <button @click="showModal = true">+</button>
       </header>
       <div class="cards">
-        <div class="card">
-          <p class="text">My first note</p>
-          <p class="date">20/10/2020</p>
-        </div>
-        <div class="card">
-          <p class="text">My second note</p>
-          <p class="date">20/10/2020</p>
-        </div>
-        <div class="card">
-          <p class="text">My third note</p>
-          <p class="date">20/10/2020</p>
+        <div v-for="note in notes" class="card">
+          <div class="text">{{ note.text }}</div>
+          <div class="date">{{ note.date }}</div>
         </div>
       </div>
     </div>
