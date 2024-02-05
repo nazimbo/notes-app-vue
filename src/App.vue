@@ -3,15 +3,25 @@ import { ref } from "vue";
 
 const showModal = ref(false);
 const newNote = ref("");
+const errorMessage = ref("");
 const notes = ref([]);
 
 const saveNote = () => {
+  if (!newNote.value) {
+    errorMessage.value = "Note can't be empty";
+    return;
+  }
+  if (newNote.value.length < 10) {
+    errorMessage.value = "Note can't be shorter than 10 characters";
+    return;
+  }
   notes.value.push({
     text: newNote.value,
     date: new Date().toLocaleDateString(),
   });
   showModal.value = false;
   newNote.value = "";
+  errorMessage.value = "";
 };
 </script>
 
@@ -19,7 +29,8 @@ const saveNote = () => {
   <main>
     <div v-if="showModal" class="overlay">
       <div class="modal">
-        <textarea v-model="newNote" id="new-note" name="new-note" placeholder="New note" cols="30" rows="10"></textarea>
+        <textarea v-model.trim="newNote" id="new-note" name="new-note" placeholder="New note" cols="30" rows="10"></textarea>
+        <div style="color: red">{{ errorMessage }}</div>
         <button @click="saveNote">Save</button>
         <button class="cancel" @click="showModal = false">Cancel</button>
       </div>
